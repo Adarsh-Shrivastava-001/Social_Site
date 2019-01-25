@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+{% for posts in posts_list %}
+<a href="{% url "posts:detail" post_pk=posts.pk %}">{{posts.title}}</a>
+
+{{posts.date_created}}<br>
+{% endfor %}
+
+{% endblock %}

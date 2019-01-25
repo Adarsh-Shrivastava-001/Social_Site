@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block css %}
+
+
+<link rel="stylesheet" href="{% static 'css/groupdetail.css' %}">
+{% endblock %}
+{% block contents %}
+
+<div class="header">
+<div class="user"><span ><img src="{{user.profile.pic.url}}" height=100  width=100 class="profile"></span> Welcome {{user.username}}</div>
+<div class="title">{{groups.name}}</div>
+
+<div class="top_but">
+
+ <span><a href="/groups/detail/{{groups.pk}}/discuss"><img src="{% static "css/img/discuss.png" %}" class="discuss"></a></span>
+  {% if user not in groups.members.all %}
+<a href="{% url "groups:join" pk=groups.pk %}" class="btn btn-warning but ">join</a>
+
+
+{% endif %}
+
+{% ifequal user groups.admin %}
+<a href="{% url "groups:delete" pk=groups.pk %}" class="btn btn-danger but">Delete</a>
+{% endifequal %}
+
+</div>
+
+
+</div>
+<hr>
+<div>
+<div class="flex-container">
+
+  
+
+    <div class="imgz">
+    <img src="{{groups.pic.url}}" class="group_image"> 
+    </div>  
+
+  <div class="group_detail">
+
+
+    <div class="nothing">
+    <h2>Details</h2>    
+    Tag : {{groups.tag}}<br>
+    Active Members : {{groups.members.count}}<br>
+    Likes : {{groups.likes}}<br>
+    Disikes : {{groups.dislikes}}<br>
+    </div>
+  </diV>
+
+
+
+   
+
+
+    <div class="group_func">
+      <h2>Description</h2>
+      {{groups.description}}
+        
+
+    </diV>
+      
+
+
+</div>
+
+
+
+
+
+<div class="flex2">
+
+
+<div class="members">
+  <br>
+
+  Our Active Members:<br>
+  {{groups.members.count}}
+  <br><br>
+
+
+{% for a in groups.members.all %}
+{{a}}<br>
+{% endfor %}
+
+</div>
+
+
+<div class="post">
+
+
+  <span class="post_head">Posts <a href="/groups/detail/{{groups.pk}}/post/create/" ><img class="icon" src="{% static "css/img/create.png" %}" ></a></span>
+
+
+
+
+
+
+<div class="container">
+  {% for post in post_list %}
+
+
+<div class="jumbotron">
+<h2><b><a class="post_title" href="{% url "posts:detail" post_pk=post.pk%}">
+{{post}}</a></b></h2> 
+-Created by : {{post.author}} on : {{post.date_created}}<br><br>
+{{post.content|slice:':300'}}...........
+</div>
+{% endfor %}
+
+</div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+/a><br>
+
+
+

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+<center><h1>Discussion Forum</h1></center>
+
+<center><h1>{{question.group}}</h1></center>
+
+<div class="container">
+	<div class="jumbotron">
+
+		<h2>Question : {{question.que|safe}}</h2>
+		<a href="{% url "qanda:createans" que_pk=question.pk %}" class="btn btn-primary ansbut">Answer</a>
+		<h7>Asked by : {{question.author}} <br>
+		On : {{question.date_created}}</h7>
+		
+
+<div class="container">
+	
+{% for ans in ans_list %}
+<div class="answer" >
+ Answered by : {{ans.author}} , 
+on : 
+{{ans.date_created}}
+<br><br>
+
+
+{{ans.ans|safe}}
+</div>
+
+{% endfor %}
+</div>
+</div>
+
+
+{% endblock %}
+

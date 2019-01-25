@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block contents %}
+nusername : {{user.username}}<br>
+email : {{user.email}}<br>
+city : {{user.profile.city}}<br>
+Birthday : {{user.profile.birthday}}<br>
+
+
+Posts : 
+{% for post in posts %}
+{{post}}<br>
+{% endfor %}
+
+
+{% endblock %}

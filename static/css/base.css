@@ -1,0 +1,51 @@
+.answer {
+	background:#ffffff;
+	margin:20px;
+	padding: 40px;
+	border-bottom-left-radius: 60px;
+	border-top-right-radius: 60px;
+	border-bottom-right-radius:60px; 
+	border-top-left-radius: -600px;
+}
+
+.ansbut{
+	float:right;
+}
+
+
+.user {
+	font-size: 24px;
+	color: #333333;
+	float :left;
+
+}
+
+.profile { 
+	height:100px;
+	width: 100px;
+	border-radius: 50%;
+}
+
+a.links:hover {
+	color:grey;
+
+}
+
+a.links:link{
+	color:#333333;
+
+}
+
+a.links:visited{
+	color:#333333;
+}
+
+
+
+
+
+
+
+
+
+

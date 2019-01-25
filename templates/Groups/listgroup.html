@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/grouplist.css' %}">
+{% endblock %}
+
+
+{% block contents %}
+<div class="container">
+<div class="user"><span ><img src="{{user.profile.pic.url}}" height=100  width=100 class="profile"></span> Welcome {{user.username}}</div>
+<div class="create">Want to create yuor own group?<br><a href="{% url "groups:create" %}" class="create btn btn-primary">Create New</a></div>
+
+
+<div class="heading"><center><b>Groups</b></center></div>
+
+<hr>
+<div class="container">
+
+{% for group in groups_list %}
+
+
+
+
+<div class='box'>
+<center>
+<div class="box1">
+		
+		
+
+	<center>	<div class="cube-container myclass ">
+				<div class="photo-cube">
+
+					<img class="front" src="{{group.pic.url}}" alt="">
+					<div class="back photo-desc">
+					  <h3>{{group.name}}</h3>
+					  <p>{{group.description}}</p>
+						<a href="{% url "groups:detail" pk=group.pk %}" class="button">Visit</a>
+					</div>
+					<img class="left" src="{{group.pic.url}}" alt="">
+					<img class="right" src="{{group.pic.url}}" alt="">
+
+				</div>
+			</div>	
+
+	</center>
+				
+
+
+
+</div>
+<h2>{{group.name}}</h2>
+<div class="addon">
+Likes : {{group.likes}}
+Dislikes : {{group.dislikes}}</div>
+
+Active Members : {{group.members.count}}
+
+
+</center>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+{% endfor %}
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

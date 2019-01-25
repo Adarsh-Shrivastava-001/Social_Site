@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+
+Oustios asked are:
+
+{% for ques in question_list %}
+
+<a href="{% url "qanda:detail" que_pk=ques.pk %}">{{ques}} </a>: {{ques.date_created}}
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/postdetail.css' %}">
+{% endblock %}
+
+
+{% block contents %}
+
+
+
+
+
+<div class="header">
+
+	<div class="user"><img src="{{user.profile.pic.url}}" height=60  width=60 class="profile">
+	Welcome {{user}}</div>
+
+
+	<center><div class="header_t" >{{posts.group}}</div></center>
+	<div><a href="{% url "groups:detail" pk=posts.group.pk %}"><img src="{% static "css/img/back.png" %}" class="back"></a></div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="comp">
+
+	<div class="top">
+
+<div class="left">
+{% if posts.date_published %}
+{{posts.date_published}}
+
+{% else %}
+<a href="{% url "posts:publish" post_pk=posts.pk %}" class="btn btn-primary">Publish</a>
+{% endif %}
+</div>
+
+<div class="title">
+
+<h1>{{posts.title}}</h1> - {{posts.author}}
+
+</div>
+
+<div class="right">
+	{{posts.tag}}
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+{{posts.content}}
+
+
+</div>
+
+
+<div class="comment_container">
+	<center>
+<div class="comment_top">
+	Comments
+</div></center>
+<div class="repbut"><a href="{% url "posts:comment:postcreatecomment" post_pk=posts.pk %}" class="repbut btn btn-danger">Comment</a></div>
+{% for comment in comment_list %}
+<div class="comment1">
+	<div class="comment_sub">
+{{comment.author}} commented on {{comment.date_created}}</div><br>
+<div class="comment">{{comment.contents|safe}}<br>
+</div>
+<div >
+	<a href="" class="repbut btn btn-primary">Reply</a>
+</div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
+
